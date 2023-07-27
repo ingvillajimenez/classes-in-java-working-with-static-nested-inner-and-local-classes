@@ -11,26 +11,24 @@ public class Product {
 
     private ReviewsAndRatings reviewsAndRatings;
 
-    public Product(String name, int price, double rating) {
+//    public Product(String name, int price, double rating) {
+    public Product(String name, int price) {
 
         this.id = Math.round(Math.random() * 10000);
         this.name = name;
         this.price = price;
 
-        this.reviewsAndRatings = new ReviewsAndRatings(rating, this);
+//        this.reviewsAndRatings = new ReviewsAndRatings(rating);
+//        this.reviewsAndRatings = new ReviewsAndRatings(rating, this);
     }
 
-    public double getRatings() {
-        return reviewsAndRatings.rating;
+    public ReviewsAndRatings getReviewsAndRatings() {
+        return reviewsAndRatings;
     }
 
-    public List<String> getReviews() {
-        return reviewsAndRatings.reviews;
+    public void setReviewsAndRatings(ReviewsAndRatings reviewsAndRatings) {
+        this.reviewsAndRatings = reviewsAndRatings;
     }
-
-//    public ReviewsAndRatings getReviewsAndRatings() {
-//        return reviewsAndRatings;
-//    }
 
     @Override
     public String toString() {
@@ -38,20 +36,16 @@ public class Product {
                 name, price, reviewsAndRatings);
     }
 
-//    public static class ReviewsAndRatings {
-    private static class ReviewsAndRatings {
+    public class ReviewsAndRatings { // inner class, no static keyword, it is inside an outer class
 
-        private final Product product;
+//        private final Product product;
         private final double rating;
         private final List<String> reviews;
 
-        public ReviewsAndRatings(double rating, Product product) {
-            // throwing exception from constructors is bad practice in Java
-//            if (product == null) {
-//                throw new IllegalArgumentException("The input argument 'product' cannot be null");
-//            }
+//        public ReviewsAndRatings(double rating, Product product) {
+        public ReviewsAndRatings(double rating) {
 
-            this.product = product;
+//            this.product = product;
             this.rating = rating;
 
             this.reviews = new ArrayList<>();
@@ -63,8 +57,11 @@ public class Product {
 
         @Override
         public String toString() {
-            return String.format("Product: %s, rating: %.1f, reviews: %s",
-                    product == null ? "<unknown>" : product.name, rating, reviews);
+            return String.format("Product: %d, %s, %d, rating: %.1f, reviews: %s",
+                    Product.this.id, Product.this.name, Product.this.price,
+                    rating, reviews);
+            // Reference the Product instance that is automatically associated with ReviewsAnRatings
+//                    product == null ? "<unknown>" : product.name, rating, reviews);
         }
     }
 }

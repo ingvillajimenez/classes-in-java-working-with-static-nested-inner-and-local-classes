@@ -8,48 +8,38 @@ public class Main {
         Product mouse = new Product("HP Mouse", 19, "Computer Accessories");
         Product printer = new Product("Epson Printer", 599, "Electronics");
 
-        System.out.println("Keyboard: " + keyboard);
-        System.out.println("Mouse: " + mouse);
-        System.out.println("Printer: " + printer);
+        Product.Category keyboardCategory = keyboard.getCategory(); // cannot access if Category class has private access modifier
+        Product.Category mouseCategory = mouse.getCategory(); // can access if Category class has private-package (default) access modifier
+        Product.Category printerCategory = printer.getCategory();
+
+        System.out.println("Keyboard category: " + keyboardCategory);
+        System.out.println("Mouse category: " + mouseCategory);
+        System.out.println("Printer category: " + printerCategory);
 
         System.out.println();
 
-        printer.updateCategory("Computer Peripherals");
-        System.out.println(printer);
+        // NOTE: We can still have categories that are not associated with any product
+        // i.e. standalone categories
 
-        System.out.println();
+        Product.Category mobiles = new Product.Category("Mobiles Phones");
+        Product.Category home = new Product.Category("Home Furnishing");
 
-        System.out.println("Keyboard category: " + keyboard.getCategory());
-        System.out.println("Mouse category: " + mouse.getCategory());
-        System.out.println("Printer category: " + printer.getCategory());
-
-        System.out.println();
+        System.out.println("Mobiles: " + mobiles);
+        System.out.println("Home: " + home);
 
 //        Product keyboard = new Product("Dell Keyboard", 49, "Computer Accessories");
 //        Product mouse = new Product("HP Mouse", 19, "Computer Accessories");
 //        Product printer = new Product("Epson Printer", 599, "Electronics");
 //
-//        System.out.println("Keyboard: " + keyboard);
-//        System.out.println("Mouse: " + mouse);
-//        System.out.println("Printer: " + printer);
+//        Category keyboardCategory = keyboard.getCategory(); // Cannot resolve symbol 'Category'
+//        Category mouseCategory = mouse.getCategory(); // Cannot resolve symbol 'Category'
+//        Category printerCategory = printer.getCategory();  // Cannot resolve symbol 'Category'
+//
+//        System.out.println("Keyboard category: " + keyboardCategory);
+//        System.out.println("Mouse category: " + mouseCategory);
+//        System.out.println("Printer category: " + printerCategory);
 //
 //        System.out.println();
-//
-//        printer.updateCategory("Computer Peripherals");
-//        System.out.println(printer);
-//
-//        System.out.println();
-//
-//        // NOTE: We can also have categories that are not associated with any product
-//        // i.e. standalone categories
-//
-//        Category mobiles = new Category("Mobile Phones");
-//        Category home = new Category("Home Furnishings");
-//
-//        System.out.println("Mobiles: " + mobiles);
-//        System.out.println("Home: " + home);
-
-
     }
 }
 

@@ -4,42 +4,32 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Product keyboard = new Product("Dell Keyboard", 49, "Computer Accessories");
-        Product mouse = new Product("HP Mouse", 19, "Computer Accessories");
-        Product printer = new Product("Epson Printer", 599, "Electronics");
+        Product keyboard = new Product(
+                "Dell Keyboard", 49, "Computer Accessories", 4.3);
+        Product mouse = new Product(
+                "HP Mouse", 19, "Computer Accessories", 3.9);
+        Product printer = new Product(
+                "Epson Printer", 599, "Electronics", 4.5);
 
-        Product.Category keyboardCategory = keyboard.getCategory(); // cannot access if Category class has private access modifier
-        Product.Category mouseCategory = mouse.getCategory(); // can access if Category class has private-package (default) access modifier
-        Product.Category printerCategory = printer.getCategory();
-
-        System.out.println("Keyboard category: " + keyboardCategory);
-        System.out.println("Mouse category: " + mouseCategory);
-        System.out.println("Printer category: " + printerCategory);
+        keyboard.getRating().printRating();
+        mouse.getRating().printRating();
+        printer.getRating().printRating();
 
         System.out.println();
 
-        // NOTE: We can still have categories that are not associated with any product
-        // i.e. standalone categories
-
-        Product.Category mobiles = new Product.Category("Mobiles Phones");
-        Product.Category home = new Product.Category("Home Furnishing");
-
-        System.out.println("Mobiles: " + mobiles);
-        System.out.println("Home: " + home);
+        Product.Rating rating = new Product.Rating(3.6, keyboard);
+        rating.printRating();
 
 //        Product keyboard = new Product("Dell Keyboard", 49, "Computer Accessories");
 //        Product mouse = new Product("HP Mouse", 19, "Computer Accessories");
 //        Product printer = new Product("Epson Printer", 599, "Electronics");
-//
-//        Category keyboardCategory = keyboard.getCategory(); // Cannot resolve symbol 'Category'
-//        Category mouseCategory = mouse.getCategory(); // Cannot resolve symbol 'Category'
-//        Category printerCategory = printer.getCategory();  // Cannot resolve symbol 'Category'
-//
-//        System.out.println("Keyboard category: " + keyboardCategory);
-//        System.out.println("Mouse category: " + mouseCategory);
-//        System.out.println("Printer category: " + printerCategory);
+
+//        keyboard.getCategory().printProductDetails();
+//        mouse.getCategory().printProductDetails();
+//        printer.getCategory().printProductDetails();
 //
 //        System.out.println();
+
     }
 }
 

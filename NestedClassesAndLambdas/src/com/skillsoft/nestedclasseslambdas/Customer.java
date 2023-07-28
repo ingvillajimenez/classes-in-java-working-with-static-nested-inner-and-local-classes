@@ -19,12 +19,21 @@ public class Customer {
         this.contactInfo = contactInfo;
     }
 
+//    public static void validateCustomer() {
+        // can define local classes within static methods, but those local classes cannot access the member variable of the outer class
+    // local classes defined within static methods can only access the static variables of the outer class
     public void validateCustomer() {
 
 //        Logger log = Logger.getLogger(Customer.class.getName()); // local variable (Effectively Final)
-        final Logger log = Logger.getLogger(Customer.class.getName()); // local variable (Effectively Final)
+        final Logger log = Logger.getLogger(Customer.class.getName()); // local variable (Explicitly Final)
 
         class ContactValidator { // local class
+            // local classes cannot be defined using access modifiers
+//        public class ContactValidator { // Modifier 'public' not allowed here
+//        private class ContactValidator { // Modifier 'private' not allowed here
+//        protected class ContactValidator { // Modifier 'protected' not allowed here
+
+//            private static String staticVariable = "some static variable"; // inner classes cannot have static declarations
 
             void populatePhoneNumber() {
                 Pattern pattern = Pattern.compile("^[1-9]\\d{2}-\\d{3}-\\d{4}");
@@ -59,6 +68,15 @@ public class Customer {
         contactValidator.populatePhoneNumber();
         contactValidator.populateEmailAddress();
     }
+
+//    ContactValidator contactValidatorMemberVariable = new ContactValidator(); // Cannot resolve symbol 'ContactValidator'
+//
+//    public void validateCustomer2() {
+//        ContactValidator contactValidator = new ContactValidator(); // Cannot resolve symbol 'ContactValidator'
+//
+//        contactValidator.populatePhoneNumber(); // Cannot resolve method 'populatePhoneNumber()'
+//        contactValidator.pouplateEmailAddress(); // Cannot resolve method 'populateEmailAddress()'
+//    }
 
     @Override
     public String toString() {

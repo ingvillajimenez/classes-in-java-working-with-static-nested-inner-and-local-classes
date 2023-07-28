@@ -1,5 +1,6 @@
 package com.skillsoft.nestedclasseslambdas;
 
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,42 +21,43 @@ public class Customer {
 
     public void validateCustomer() {
 
+//        Logger log = Logger.getLogger(Customer.class.getName()); // local variable (Effectively Final)
+        final Logger log = Logger.getLogger(Customer.class.getName()); // local variable (Effectively Final)
+
         class ContactValidator { // local class
 
-            private final String contactInfo;
-
-            public ContactValidator(String contactInfo) {
-                this.contactInfo = contactInfo;
-            }
-
-            String getPhoneNumber() {
+            void populatePhoneNumber() {
                 Pattern pattern = Pattern.compile("^[1-9]\\d{2}-\\d{3}-\\d{4}");
-                Matcher phoneMatcher = pattern.matcher(contactInfo);
+                Matcher phoneMatcher = pattern.matcher(contactInfo); // local class accesses the member variable of the outer class
 
                 if (phoneMatcher.find()) {
-                    return phoneMatcher.group();
-                }
+                    validPhoneNumber = phoneMatcher.group(); // local class accesses the member variable of the outer class
 
-                return null;
+                    log.info("Valid phone number found: " + validPhoneNumber); // accessing local variable log
+                } else {
+                    log.warning("No valid phone number found for: " + name); // accessing local variable log
+                }
             }
 
-            String getEmailAddress() {
+            void populateEmailAddress() {
 
                 Pattern pattern = Pattern.compile("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}");
-                Matcher emailMatcher = pattern.matcher(contactInfo);
+                Matcher emailMatcher = pattern.matcher(contactInfo); // local class accesses the member variable of the outer class
 
                 if (emailMatcher.find()) {
-                    return emailMatcher.group();
-                }
+                    validEmailAddress = emailMatcher.group(); // local class accesses the member variable of the outer class
 
-                return null;
+                    log.info("Valid email address found: " + validEmailAddress); // accessing local variable log
+                } else {
+                    log.warning("No valid email address found for: " + name); // accessing local variable log
+                }
             }
         }
 
-        ContactValidator contactValidator = new ContactValidator(contactInfo);
+        ContactValidator contactValidator = new ContactValidator();
 
-        this.validPhoneNumber = contactValidator.getPhoneNumber();
-        this.validEmailAddress = contactValidator.getEmailAddress();
+        contactValidator.populatePhoneNumber();
+        contactValidator.populateEmailAddress();
     }
 
     @Override

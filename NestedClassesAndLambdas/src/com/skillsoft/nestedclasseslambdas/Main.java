@@ -20,6 +20,7 @@ public class Main {
         lucy.validateCustomer();
 
         System.out.println(lucy);
+
     }
 }
 
@@ -36,3 +37,7 @@ public class Main {
 // Local Classes
 // Defined locally within a block of Java code, rather than in its own file, or nested within another class
 // A local class can only be accessed within the block in which it's declared
+// A local class has complete access to the member variables of the outer class
+
+// Final or Effectively Final
+// The value held in the local variable should not change once it has been assigned

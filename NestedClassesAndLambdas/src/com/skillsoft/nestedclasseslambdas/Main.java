@@ -6,34 +6,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        StringContainer names = new StringContainer("Alice", "Bob", "Charles", "Darwin");
+        Customer jason = new Customer(1234, "Jason", "212-345-1235, jason@gmail.com");
+        jason.validateCustomer();
 
-        for(String name: names) {
-            System.out.println(name);
-        }
+        System.out.println(jason);
 
-//        Iterator<String> namesIterator = names.iterator();
-//
-//        System.out.println("\nFirst element");
-//        System.out.println("Has next: " + namesIterator.hasNext());
-//        System.out.println(namesIterator.next());
-//
-//        System.out.println("\nSecond element");
-//        System.out.println("Has next: " + namesIterator.hasNext());
-//        System.out.println(namesIterator.next());
-//
-//        System.out.println("\nThird element");
-//        System.out.println("Has next: " + namesIterator.hasNext());
-//        System.out.println(namesIterator.next());
-//
-//        System.out.println("\nFourth element");
-//        System.out.println("Has next: " + namesIterator.hasNext());
-//        System.out.println(namesIterator.next());
-//
-//        System.out.println("\nOut of elements");
-//        System.out.println("Has next: " + namesIterator.hasNext());
-//        System.out.println(namesIterator.next()); // java.lang.ArrayIndexOutOfBoundsException
+        Customer mona = new Customer(2344, "Mona", "2334546567, mona@somemail.com");
+        mona.validateCustomer();
 
+        System.out.println(mona);
+
+        Customer lucy = new Customer(2344, "Lucy", "425-341-0987, lucy@somemail");
+        lucy.validateCustomer();
+
+        System.out.println(lucy);
     }
 }
 
@@ -46,3 +32,7 @@ public class Main {
 
 // Iterators
 // Allow iterating over elements in any collection
+
+// Local Classes
+// Defined locally within a block of Java code, rather than in its own file, or nested within another class
+// A local class can only be accessed within the block in which it's declared

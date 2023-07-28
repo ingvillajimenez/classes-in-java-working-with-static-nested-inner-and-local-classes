@@ -7,17 +7,14 @@ public class Main {
     public static void main(String[] args) {
 
         Customer jason = new Customer(1234, "Jason", "212-345-1235, jason@gmail.com");
-        jason.validateCustomer();
 
         System.out.println(jason);
 
         Customer mona = new Customer(2344, "Mona", "2334546567, mona@somemail.com");
-        mona.validateCustomer();
 
         System.out.println(mona);
 
         Customer lucy = new Customer(2344, "Lucy", "425-341-0987, lucy@somemail");
-        lucy.validateCustomer();
 
         System.out.println(lucy);
 
